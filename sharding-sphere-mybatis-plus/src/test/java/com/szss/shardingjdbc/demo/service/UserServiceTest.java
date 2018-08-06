@@ -34,5 +34,6 @@ public class UserServiceTest {
         userDO.setUsername("zcg");
         userDO.setPassword("123456");
         userDAO.insert(userDO);
+        log.debug("user id:{}",userDO.getUserId());
     }
 }
