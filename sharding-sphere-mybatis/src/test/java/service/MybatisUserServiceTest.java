@@ -1,4 +1,4 @@
-package com.szss.shardingjdbc.demo.service;
+package service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.szss.shardingjdbc.demo.MybatisPlusApplication;
+import com.szss.shardingjdbc.demo.MybatisApplication;
 import com.szss.shardingjdbc.demo.dao.UserDAO;
 import com.szss.shardingjdbc.demo.domain.UserDO;
+import com.szss.shardingjdbc.demo.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,8 +19,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = MybatisPlusApplication.class)
-public class UserServiceTest {
+@SpringBootTest(classes = MybatisApplication.class)
+public class MybatisUserServiceTest {
 
     @Autowired
     private UserService userService;
@@ -28,12 +29,11 @@ public class UserServiceTest {
     private UserDAO userDAO;
 
     @Test
-    public void testUser() {
+    public void testInsertUser() {
         UserDO userDO = new UserDO();
-        // userDO.setUserId(1L);
         userDO.setUsername("zcg");
         userDO.setPassword("123456");
-        userDAO.insert(userDO);
+        userDAO.insertUser(userDO);
         log.debug("user id:{}", userDO.getUserId());
     }
 }

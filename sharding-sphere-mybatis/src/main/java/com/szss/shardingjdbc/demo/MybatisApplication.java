@@ -1,5 +1,6 @@
 package com.szss.shardingjdbc.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,8 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2018/8/5
  */
 @SpringBootApplication
-public class Application {
+@MapperScan(basePackages = "com.szss.shardingjdbc.demo.dao")
+public class MybatisApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(MybatisApplication.class, args);
     }
 }
