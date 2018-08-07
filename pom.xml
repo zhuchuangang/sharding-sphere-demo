@@ -11,6 +11,7 @@
     <modules>
         <module>sharding-sphere-mybatis-plus</module>
         <module>sharding-sphere-mybatis</module>
+        <module>sharding-sphere-strategy-standard</module>
     </modules>
 
     <parent>
@@ -62,6 +63,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.47</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
