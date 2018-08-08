@@ -16,8 +16,7 @@ public interface UserDAO {
      * 新增用户
      * 
      * @param user 用户信息
-     * @return
+     * @return Long
      */
-    //@Insert("insert into t_user(user_id,username,password) values(#{user.userId},#{user.username},#{user.password})")
     Long insertUser(@Param("user") UserDO user);
 }

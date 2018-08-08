@@ -30,10 +30,12 @@ public class MybatisUserServiceTest {
 
     @Test
     public void testInsertUser() {
-        UserDO userDO = new UserDO();
-        userDO.setUsername("zcg");
-        userDO.setPassword("123456");
-        userDAO.insertUser(userDO);
-        log.debug("user id:{}", userDO.getUserId());
+        for (long i = 0; i < 10; i++) {
+            UserDO userDO = new UserDO();
+            userDO.setUsername("zcg");
+            userDO.setPassword("123456");
+            userDAO.insertUser(userDO);
+            log.debug("user id:{}", userDO.getUserId());
+        }
     }
 }

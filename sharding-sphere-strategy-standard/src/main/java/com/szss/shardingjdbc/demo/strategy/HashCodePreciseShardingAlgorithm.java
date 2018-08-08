@@ -23,12 +23,7 @@ public class HashCodePreciseShardingAlgorithm implements PreciseShardingAlgorith
         log.info("availableTargetNames:" + JSON.toJSONString(availableTargetNames) + ",preciseShardingValue:"
             + JSON.toJSONString(shardingValue));
         // 通过hashcode取模
-        int num = (shardingValue.getValue() + "").hashCode() % availableTargetNames.size();
-        String[] list = availableTargetNames.toArray(new String[availableTargetNames.size()]);
-        if (num <= availableTargetNames.size()) {
-            log.info("return name:" + list[num]);
-            return list[num];
-        }
-        return null;
+        int index = (shardingValue.getValue() + "").hashCode() % availableTargetNames.size();
+        return (String)availableTargetNames.toArray()[Math.abs(index)];
     }
 }

@@ -1,19 +1,16 @@
 CREATE TABLE t_user_0 (
-  type_id  BIGINT,
   user_id  BIGINT        NOT NULL PRIMARY KEY,
   username NVARCHAR(100) NOT NULL,
   password NVARCHAR(100) NOT NULL
 );
 
 CREATE TABLE t_user_1 (
-  type_id  BIGINT,
   user_id  BIGINT        NOT NULL PRIMARY KEY,
   username NVARCHAR(100) NOT NULL,
   password NVARCHAR(100) NOT NULL
 );
 
 CREATE TABLE t_user_2 (
-  type_id  BIGINT,
   user_id  BIGINT        NOT NULL PRIMARY KEY,
   username NVARCHAR(100) NOT NULL,
   password NVARCHAR(100) NOT NULL
