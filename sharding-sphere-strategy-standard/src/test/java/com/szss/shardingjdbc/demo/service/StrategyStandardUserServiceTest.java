@@ -1,4 +1,4 @@
-package service;
+package com.szss.shardingjdbc.demo.service;
 
 import java.util.Locale;
 
@@ -12,7 +12,6 @@ import com.github.javafaker.Faker;
 import com.szss.shardingjdbc.demo.StrategyStandardApplication;
 import com.szss.shardingjdbc.demo.dao.UserDAO;
 import com.szss.shardingjdbc.demo.domain.UserDO;
-import com.szss.shardingjdbc.demo.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,16 +43,16 @@ public class StrategyStandardUserServiceTest {
         }
     }
 
-//    @Test
-//    public void testFindById() {
-//        Long id = 233913777018372096L;
-//        UserDO result = userDAO.findById(id);
-//        log.info("user info:" + result.toString());
-//    }
-//
-//    @Test
-//    public void testFindByUsername() {
-//        UserDO result = userDAO.findByUsername("zcg");
-//        log.info("user info:" + result.toString());
-//    }
+    @Test
+    public void testFindById() {
+        Long id = 233913777018372096L;
+        UserDO result = userDAO.findById(id);
+        log.info("user info:" + result.toString());
+    }
+
+    @Test
+    public void testFindByUsername() {
+        UserDO result = userDAO.findByUsername("zcg");
+        log.info("user info:" + result.toString());
+    }
 }

@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mysql-3306:
+    image: mysql:5.7.23
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+      - "/Users/zcg/data/mysql/db/3306:/var/lib/mysql"
+      - "./3306:/etc/mysql/conf.d"
+  mysql-3307:
+    image: mysql:5.7.23
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+      - "/Users/zcg/data/mysql/db/3307:/var/lib/mysql"
+      - "./3307:/etc/mysql/conf.d"

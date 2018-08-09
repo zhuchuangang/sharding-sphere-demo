@@ -1,0 +1,48 @@
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.szss.shardingjdbc.demo.domain
+
+sharding:
+  jdbc:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds0?characterEncoding=utf8
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds1?characterEncoding=utf8
+        username: root
+        password: 123456
+    config:
+      sharding:
+        default-database-strategy:
+          standard:
+            sharding-column: user_id
+            precise-algorithm-class-name: com.szss.shardingjdbc.demo.strategy.HashCodePreciseShardingAlgorithm
+            range-algorithm-class-name: com.szss.shardingjdbc.demo.strategy.EndWithRangeShardingAlgorithm
+        tables:
+          t_user:
+            actual-data-nodes: ds$->{0..1}.t_user_$->{0..2}
+            key-generator-column-name: user_id
+            table-strategy:
+              inline:
+                sharding-column: user_id
+                algorithm-expression: t_user_$->{user_id % 3}
+        props:
+          sql:
+            show: true
+
+# 日志
+logging:
+  level:
+    root: INFO
+    com.szss: DEBUG
+    java.sql: DEBUG
+    org.mybatis: DEBUG
+    io.shardingsphere: DEBUG

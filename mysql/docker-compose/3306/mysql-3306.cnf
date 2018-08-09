@@ -1,0 +1,17 @@
+[mysqld]
+#服务端编码
+collation-server = utf8_unicode_ci
+#设置连接字符集
+init-connect='SET NAMES utf8'
+#服务端字符集
+character-set-server = utf8
+
+log-bin=mysql-bin
+#服务器ID
+server-id=1
+#表示同步的时候ignore的数据库
+binlog-ignore-db=information_schema
+binlog-ignore-db=cluster
+binlog-ignore-db=mysql
+#指定需要同步的数据库
+binlog-do-db=test

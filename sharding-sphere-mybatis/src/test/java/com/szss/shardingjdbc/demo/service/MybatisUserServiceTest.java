@@ -1,4 +1,4 @@
-package service;
+package com.szss.shardingjdbc.demo.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

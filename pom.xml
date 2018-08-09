@@ -12,6 +12,7 @@
         <module>sharding-sphere-mybatis-plus</module>
         <module>sharding-sphere-mybatis</module>
         <module>sharding-sphere-strategy-standard</module>
+        <module>sharding-sphere-strategy-range</module>
     </modules>
 
     <parent>
