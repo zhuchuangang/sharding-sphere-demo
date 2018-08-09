@@ -1,0 +1,66 @@
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.szss.shardingjdbc.demo.domain
+
+sharding:
+  jdbc:
+    datasource:
+      names: ds0,ds1,ds0-slave,ds1-slave
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds0?characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds1?characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+      ds0-slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/ds0?characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+      ds1-slave:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/ds1?characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+    config:
+      sharding:
+        default-database-strategy:
+          inline:
+            sharding-column: user_id
+            algorithm-expression: ds$->{user_id % 2}
+        tables:
+          t_user:
+            actual-data-nodes: ds$->{0..1}.t_user_$->{0..2}
+            table-strategy:
+              inline:
+                sharding-column: user_id
+                algorithm-expression: t_user_$->{user_id % 3}
+            key-generator-column-name: user_id
+        props:
+          sql:
+            show: true
+        master-slave-rules:
+          ds0:
+            master-data-source-name: ds0
+            slave-data-source-names: ds0-slave
+          ds1:
+            master-data-source-name: ds1
+            slave-data-source-names: ds1-slave
+
+# 日志
+logging:
+  level:
+    root: INFO
+    com.szss: DEBUG
+    java.sql: DEBUG
+    org.mybatis: DEBUG
+    io.shardingsphere: DEBUG

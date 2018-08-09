@@ -14,7 +14,8 @@ binlog-ignore-db=information_schema
 binlog-ignore-db=cluster
 binlog-ignore-db=mysql
 #指定需要同步的数据库
-binlog-do-db=test
+binlog-do-db=ds0
+binlog-do-db=ds1
 
 #slave节点配置
 log-slave-updates
