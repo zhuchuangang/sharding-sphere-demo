@@ -1,10 +1,16 @@
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
 [mysqld]
 #服务端编码
-collation-server = utf8_unicode_ci
+collation-server=utf8_unicode_ci
 #设置连接字符集
 init-connect='SET NAMES utf8'
 #服务端字符集
-character-set-server = utf8
+character-set-server=utf8
 
 log-bin=mysql-bin
 #服务器ID

@@ -45,6 +45,8 @@ sharding:
             sharding-column: user_id
             algorithm-expression: ds$->{user_id % 2}
         tables:
+          t_config:
+            actual-data-nodes: ds0.t_config
           t_user:
             actual-data-nodes: ds$->{0..1}.t_user_$->{0..2}
             table-strategy:

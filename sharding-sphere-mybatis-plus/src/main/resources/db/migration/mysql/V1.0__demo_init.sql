@@ -46,4 +46,7 @@ CREATE TABLE t_order_item_2 (
   order_id      INT    NOT NULL
 );
 
-
+CREATE TABLE t_config (
+  id   BIGINT       NOT NULL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);

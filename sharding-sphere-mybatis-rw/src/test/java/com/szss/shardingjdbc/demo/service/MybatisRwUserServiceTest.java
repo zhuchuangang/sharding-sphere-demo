@@ -40,7 +40,7 @@ public class MybatisRwUserServiceTest {
 
     @Test
     public void testFindByid() {
-        UserDO userDO = userDAO.findById(234346880874577920L);
+        UserDO userDO = userDAO.findById(234346881143013376L);
         log.debug("user:{}}", userDO);
 
     }
